@@ -5,7 +5,7 @@ public class Usuario {
 	
 	int id;
 	String nombre;
-	String contraseña;
+	String password;
 	Date fechaIngreso;
 	
 	public Usuario (){
@@ -28,12 +28,12 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getpassword() {
+		return password;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setpassword(String password) {
+		this.password = password;
 	}
 
 	public Date getFechaIngreso() {
