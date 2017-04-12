@@ -3,10 +3,10 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 		<hibernate-mapping package="modelo">
-			<class name="Conductor" table="CONDUCTOR">
-				<id name="idConductor" column="ID_CONDUCTOR">
+			<class name="Pasajero" table="PASAJERO">
+				<id name="idPasajero" column="ID_PASAJERO">
 					<generator class="native" />
 				</id>
-			<property name="fechaVencimientoLic"></property>
+				<property name="creditos"></property>
 			</class>
 		</hibernate-mapping>

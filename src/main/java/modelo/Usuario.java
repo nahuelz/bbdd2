@@ -3,21 +3,27 @@ import java.util.Date;
 
 public class Usuario {
 	
-	int id;
+	int idUsuario;
 	String nombre;
 	String password;
 	Date fechaIngreso;
 	
-	public Usuario (){
-	
+	public Usuario (String nombre, String password, Date fecha){
+		this.setNombre(nombre);
+		this.setPassword(password);
+		this.setFechaIngreso(fecha);
 	}
 	
-	public int getId() {
-		return id;
+	public Usuario() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getNombre() {
@@ -28,11 +34,11 @@ public class Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getpassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setpassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 

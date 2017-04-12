@@ -7,6 +7,6 @@
 				<id name="idConductor" column="ID_CONDUCTOR">
 					<generator class="native" />
 				</id>
-				<property name="fechaVencimientoLic"></property>
+			<property name="fechaVencimientoLic"></property>
 			</class>
 		</hibernate-mapping>

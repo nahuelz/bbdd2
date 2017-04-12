@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+		<hibernate-mapping package="modelo">
+			<class name="Usuario" table="USUARIO">
+				<id name="idUsuario" column="ID_USUARIO">
+					<generator class="native" />
+				</id>
+				
+				<discriminator column="TIPO_USUARIO" type="string"/>			
+				
+				<property name="nombre" column="NOMBRE"></property>
+				<property name="password" column="PASSWORD"></property>
+				<property name="fechaIngreso" column="FECHA_INGRESO"></property>
+				
+				<subclass name="Pasajero" discriminator-value="PASAJERO">
+					<property name="creditos" column="CREDITOS"/>
+				</subclass>
+				
+				<subclass name="Conductor" discriminator-value="CONDUCTOR">
+					<property name="fechaVencimientoLic" column="VENCIMIENTO_LIC"/>
+				</subclass>
+
+			</class>
+		</hibernate-mapping>
