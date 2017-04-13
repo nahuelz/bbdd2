@@ -1,6 +1,5 @@
 package utils;
 
-
 import java.util.Date;
 
 import org.hibernate.Session;  
@@ -34,61 +33,30 @@ public class Main {
 		
 		SessionFactory sf = cfg.buildSessionFactory();
 		
-		Conductor conductor = new Conductor();
-		conductor.setNombre("Roberto");
-		conductor.setPassword("123456");
-		conductor.setFechaIngreso(new Date());
-		conductor.setFechaVencimientoLic(new Date());
+		Conductor conductor = new Conductor("Roberto", "123456", new Date(), new Date());
 		
-		Viaje viaje = new Viaje();
-		viaje.setCantidadMaximaPasajeros(10);
-		viaje.setConductor(conductor);
-		viaje.setCostoTotal(900);
-		viaje.setDestino("Tres arroyos");
-		viaje.setOrigen("La plata");
-		viaje.setFecha(new Date());
+		Viaje viaje = new Viaje("La Plata", "Tres Arroyos", 900, 10, new Date(), conductor);
 
-		Pasajero pasajero1 = new Pasajero();
-		pasajero1.setNombre("Germán");
-		pasajero1.setPassword("123456");
-		pasajero1.setFechaIngreso(new Date());
-		pasajero1.setCreditos(1500);
+		Pasajero pasajero1 = new Pasajero("Germán", "123456", new Date(), 1500);
 		
-		Pasajero pasajero2 = new Pasajero();
-		pasajero2.setNombre("Alicia");
-		pasajero2.setPassword("Margarita");
-		pasajero2.setFechaIngreso(new Date());
-		pasajero2.setCreditos(1500);
+		Pasajero pasajero2 = new Pasajero("Alicia", "123456", new Date(), 1500);
 		
-		Pasajero pasajero3 = new Pasajero();
-		pasajero3.setNombre("Margarita");
-		pasajero3.setPassword("123456");
-		pasajero3.setFechaIngreso(new Date());
-		pasajero3.setCreditos(1500);
+		Pasajero pasajero3 = new Pasajero("Margarita", "123456", new Date(), 1500);
 		
 		viaje.addPasajero(pasajero1);
 		viaje.addPasajero(pasajero2);
 		viaje.addPasajero(pasajero3);
 		
-		viaje.setFinalizado(true);
+		viaje.finalizar();
 		
-		Comentario comentario1 = new Comentario();
-		comentario1.setCalificacion(5);
-		comentario1.setComentario("Muy buen conductor");
-		comentario1.setPasajero(pasajero1);
-		comentario1.setViaje(viaje);
+		Comentario comentario1 = new Comentario(5, "Muy buen conductor", pasajero1);
+		viaje.addComentario(comentario1);
 		
-		Comentario comentario2 = new Comentario();
-		comentario2.setCalificacion(4);
-		comentario2.setComentario("Buen conductor");
-		comentario2.setPasajero(pasajero2);
-		comentario2.setViaje(viaje);
+		Comentario comentario2 = new Comentario(4, "Buen conductor", pasajero2);
+		viaje.addComentario(comentario2);
 		
-		Comentario comentario3 = new Comentario();
-		comentario3.setCalificacion(4);
-		comentario3.setComentario("Buen conductor");
-		comentario3.setPasajero(pasajero3);
-		comentario3.setViaje(viaje);
+		Comentario comentario3 = new Comentario(4, "Buen conductor", pasajero3);
+		viaje.addComentario(comentario3);
 		
 		float costo = viaje.costoPorPasajero();
 		pasajero1.descontarCredito(costo);
@@ -103,14 +71,9 @@ public class Main {
 		muber.addUser(pasajero3);
 		
 		Session session = sf.openSession();
-		
-		
 
 		Transaction tx = session.beginTransaction();
 		session.persist(muber);
-		session.persist(comentario1);
-		session.persist(comentario2);
-		session.persist(comentario3);
 		tx.commit();
 		 	
 		 	

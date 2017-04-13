@@ -22,6 +22,11 @@
 					<key column="ID_VIAJE"/>
 					<many-to-many column="ID_PASAJERO" class="Pasajero"/>
 				</set>
+				
+				<set name="comentarios" table="COMENTARIO" cascade="all">
+					<key column="ID_VIAJE"/>
+					<one-to-many class="Comentario"/>
+				</set>
 								
 			</class>
 		</hibernate-mapping>

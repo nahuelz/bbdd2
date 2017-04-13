@@ -6,10 +6,15 @@ public class Comentario {
 	String comentario;
 	int calificacion;
 	Pasajero pasajero;
-	Viaje viaje;
 	
 	public Comentario (){
 		
+	}
+	
+	public Comentario(int calificacion, String comentario, Pasajero pasajero) {
+		this.comentario = comentario;
+		this.calificacion = calificacion;
+		this.pasajero = pasajero;
 	}
 	
 	public int getIdComentario() {
@@ -44,12 +49,12 @@ public class Comentario {
 		this.pasajero = pasajero;
 	}
 
-	public Viaje getViaje() {
+	/*public Viaje getViaje() {
 		return viaje;
 	}
 
 	public void setViaje(Viaje viaje) {
 		this.viaje = viaje;
-	}
+	}*/
 	
 }

@@ -13,22 +13,23 @@ public class Viaje {
 	int cantidadMaximaPasajeros;
 	Conductor conductor;
 	Collection<Pasajero> pasajeros;
+	Collection<Comentario> comentarios;
 	boolean finalizado;
 
-	public Viaje(){
+	public Viaje() {
 		this.pasajeros = new HashSet<Pasajero>();
+		this.comentarios = new HashSet<Comentario>();
 		this.finalizado = false;
 	}
 	
 	public Viaje(String origen, String destino, int costoTotal, int pasajeros, Date fecha, Conductor conductor){
+		this();
 		this.setOrigen(origen);
 		this.setDestino(destino);
 		this.setCantidadMaximaPasajeros(pasajeros);
 		this.setFecha(fecha);
 		this.setCostoTotal(costoTotal);
 		this.setConductor(conductor);
-		this.pasajeros = new HashSet<Pasajero>();
-		this.finalizado = false;
 	}
 	
 	public int getIdViaje() {
@@ -84,20 +85,43 @@ public class Viaje {
 		this.pasajeros = pasajeros;
 	}
 	
-	public void addPasajero (Pasajero pasajero){
-		this.pasajeros.add(pasajero);
+	public Collection<Comentario> getComentarios() {
+		return comentarios;
+	}
+ 
+	public void setComentarios(Collection<Comentario> comentarios) {
+		this.comentarios = comentarios;
 	}
 	
-	public boolean getFinalizado(){
+	public void addPasajero (Pasajero pasajero) {
+		if((pasajeros.size() < this.getCantidadMaximaPasajeros()) && 
+				(this.puedeViajar(pasajero))) {
+			this.pasajeros.add(pasajero);
+		}
+	}
+	
+	public boolean getFinalizado() {
 		return finalizado;
 	}
 	
-	public void setFinalizado(boolean finalizado){
+	private void setFinalizado(boolean finalizado) {
 		this.finalizado = finalizado;
 	}
 	
-	public float costoPorPasajero(){
-		return (this.costoTotal / this.pasajeros.size()); 
+	public float costoPorPasajero() {
+		return (this.costoTotal / this.pasajeros.size());
+	}
+	
+	private boolean puedeViajar(Pasajero pasajero) {
+		return (pasajero.getCreditos() >= this.costoTotal / (this.pasajeros.size() + 1));
+	}
+	
+	public void finalizar() {
+		this.setFinalizado(true);
+	}
+	
+	public void addComentario(Comentario comentario) {
+		this.comentarios.add(comentario);
 	}
 	
 	
