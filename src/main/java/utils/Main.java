@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
+import modelo.Comentario;
 import modelo.Conductor;
 import modelo.Muber;
 import modelo.Pasajero;
@@ -61,6 +62,12 @@ public class Main {
 		viaje.addPasajero(user);
 		viaje.addPasajero(user3);
 		
+		Comentario comentario = new Comentario();
+		comentario.setCalificacion(10);
+		comentario.setComentario("Buen conductor");
+		comentario.setPasajero(user);
+		comentario.setViaje(viaje);
+		
 		Muber muber = new Muber();
 		muber.addViaje(viaje);
 		muber.addUser(user);
@@ -73,6 +80,7 @@ public class Main {
 
 		Transaction tx = session.beginTransaction();
 		session.persist(muber);
+		session.persist(comentario);
 		tx.commit();
 		 	
 		 	

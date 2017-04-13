@@ -13,9 +13,11 @@ public class Viaje {
 	int cantidadMaximaPasajeros;
 	Conductor conductor;
 	Collection<Pasajero> pasajeros;
+	boolean finalizado;
 
 	public Viaje(){
 		this.pasajeros = new HashSet<Pasajero>();
+		this.finalizado = false;
 	}
 	
 	public Viaje(String origen, String destino, int costoTotal, int pasajeros, Date fecha, Conductor conductor){
@@ -26,6 +28,7 @@ public class Viaje {
 		this.setCostoTotal(costoTotal);
 		this.setConductor(conductor);
 		this.pasajeros = new HashSet<Pasajero>();
+		this.finalizado = false;
 	}
 	
 	public int getIdViaje() {
@@ -83,6 +86,14 @@ public class Viaje {
 	
 	public void addPasajero (Pasajero pasajero){
 		this.pasajeros.add(pasajero);
+	}
+	
+	public boolean isFinalizado() {
+		return finalizado;
+	}
+
+	public void setFinalizado(boolean finalizado) {
+		this.finalizado = finalizado;
 	}
 	
 	

@@ -24,6 +24,7 @@
 		<mapping resource="hibernate/muber.hbm.xml" />
 		<mapping resource="hibernate/usuario.hbm.xml" />
 		<mapping resource="hibernate/viaje.hbm.xml" />
+		<mapping resource="hibernate/comentario.hbm.xml" />
 		
 		<!-- <mapping resource="hibernate/clase.hbm.xml" /> -->
 
