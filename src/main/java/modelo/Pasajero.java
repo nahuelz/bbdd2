@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Pasajero extends Usuario {
 
-	int creditos;
-	int idPasajero;
+	private float creditos;
+	private int idPasajero;
 
 	public Pasajero(){
 		super();
@@ -16,11 +16,11 @@ public class Pasajero extends Usuario {
 		this.setCreditos(creditos);
 	}
 	
-	public int getCreditos() {
+	public float getCreditos() {
 		return creditos;
 	}
 
-	public void setCreditos(int creditos) {
+	public void setCreditos(float creditos) {
 		this.creditos = creditos;
 	}
 	
@@ -32,4 +32,7 @@ public class Pasajero extends Usuario {
 		this.idPasajero = idPasajero;
 	}
 	
+	public void descontarCredito(float cantidad){
+		this.creditos = this.creditos - cantidad;
+	}
 }

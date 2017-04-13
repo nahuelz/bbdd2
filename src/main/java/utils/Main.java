@@ -72,11 +72,11 @@ public class Main {
 		
 		viaje.setFinalizado(true);
 		
-		Comentario comentario = new Comentario();
-		comentario.setCalificacion(5);
-		comentario.setComentario("Muy buen conductor");
-		comentario.setPasajero(pasajero1);
-		comentario.setViaje(viaje);
+		Comentario comentario1 = new Comentario();
+		comentario1.setCalificacion(5);
+		comentario1.setComentario("Muy buen conductor");
+		comentario1.setPasajero(pasajero1);
+		comentario1.setViaje(viaje);
 		
 		Comentario comentario2 = new Comentario();
 		comentario2.setCalificacion(4);
@@ -89,6 +89,11 @@ public class Main {
 		comentario3.setComentario("Buen conductor");
 		comentario3.setPasajero(pasajero3);
 		comentario3.setViaje(viaje);
+		
+		float costo = viaje.costoPorPasajero();
+		pasajero1.descontarCredito(costo);
+		pasajero2.descontarCredito(costo);
+		pasajero3.descontarCredito(costo);
 		
 		Muber muber = new Muber();
 		muber.addViaje(viaje);
@@ -103,7 +108,9 @@ public class Main {
 
 		Transaction tx = session.beginTransaction();
 		session.persist(muber);
-		session.persist(comentario);
+		session.persist(comentario1);
+		session.persist(comentario2);
+		session.persist(comentario3);
 		tx.commit();
 		 	
 		 	

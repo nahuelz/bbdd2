@@ -96,5 +96,9 @@ public class Viaje {
 		this.finalizado = finalizado;
 	}
 	
+	public float costoPorPasajero(){
+		return (this.costoTotal / this.pasajeros.size()); 
+	}
+	
 	
 }
