@@ -61,6 +61,7 @@ public class Main {
 		viaje.setFecha(new Date());
 		viaje.addPasajero(user);
 		viaje.addPasajero(user3);
+		viaje.setFinalizado(true);
 		
 		Comentario comentario = new Comentario();
 		comentario.setCalificacion(10);
