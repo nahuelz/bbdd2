@@ -88,11 +88,11 @@ public class Viaje {
 		this.pasajeros.add(pasajero);
 	}
 	
-	public boolean isFinalizado() {
+	public boolean getFinalizado(){
 		return finalizado;
 	}
-
-	public void setFinalizado(boolean finalizado) {
+	
+	public void setFinalizado(boolean finalizado){
 		this.finalizado = finalizado;
 	}
 	

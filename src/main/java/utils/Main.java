@@ -34,46 +34,68 @@ public class Main {
 		
 		SessionFactory sf = cfg.buildSessionFactory();
 		
-		Pasajero user = new Pasajero();
-		user.setNombre("Nahuel");
-		user.setPassword("123456");
-		user.setFechaIngreso(new Date());
-		user.setCreditos(20);
-		
-		Pasajero user3 = new Pasajero();
-		user3.setNombre("ASDASD");
-		user3.setPassword("123456");
-		user3.setFechaIngreso(new Date());
-		user3.setCreditos(20);
-		
-		Conductor user2 = new Conductor();
-		user2.setNombre("PEPE");
-		user2.setPassword("123456");
-		user2.setFechaIngreso(new Date());
-		user2.setFechaVencimientoLic(new Date());
+		Conductor conductor = new Conductor();
+		conductor.setNombre("Roberto");
+		conductor.setPassword("123456");
+		conductor.setFechaIngreso(new Date());
+		conductor.setFechaVencimientoLic(new Date());
 		
 		Viaje viaje = new Viaje();
 		viaje.setCantidadMaximaPasajeros(10);
-		viaje.setConductor(user2);
-		viaje.setCostoTotal(500);
-		viaje.setDestino("Olavarria");
+		viaje.setConductor(conductor);
+		viaje.setCostoTotal(900);
+		viaje.setDestino("Tres arroyos");
 		viaje.setOrigen("La plata");
 		viaje.setFecha(new Date());
-		viaje.addPasajero(user);
-		viaje.addPasajero(user3);
+
+		Pasajero pasajero1 = new Pasajero();
+		pasajero1.setNombre("Germán");
+		pasajero1.setPassword("123456");
+		pasajero1.setFechaIngreso(new Date());
+		pasajero1.setCreditos(1500);
+		
+		Pasajero pasajero2 = new Pasajero();
+		pasajero2.setNombre("Alicia");
+		pasajero2.setPassword("Margarita");
+		pasajero2.setFechaIngreso(new Date());
+		pasajero2.setCreditos(1500);
+		
+		Pasajero pasajero3 = new Pasajero();
+		pasajero3.setNombre("Margarita");
+		pasajero3.setPassword("123456");
+		pasajero3.setFechaIngreso(new Date());
+		pasajero3.setCreditos(1500);
+		
+		viaje.addPasajero(pasajero1);
+		viaje.addPasajero(pasajero2);
+		viaje.addPasajero(pasajero3);
+		
 		viaje.setFinalizado(true);
 		
 		Comentario comentario = new Comentario();
-		comentario.setCalificacion(10);
-		comentario.setComentario("Buen conductor");
-		comentario.setPasajero(user);
+		comentario.setCalificacion(5);
+		comentario.setComentario("Muy buen conductor");
+		comentario.setPasajero(pasajero1);
 		comentario.setViaje(viaje);
+		
+		Comentario comentario2 = new Comentario();
+		comentario2.setCalificacion(4);
+		comentario2.setComentario("Buen conductor");
+		comentario2.setPasajero(pasajero2);
+		comentario2.setViaje(viaje);
+		
+		Comentario comentario3 = new Comentario();
+		comentario3.setCalificacion(4);
+		comentario3.setComentario("Buen conductor");
+		comentario3.setPasajero(pasajero3);
+		comentario3.setViaje(viaje);
 		
 		Muber muber = new Muber();
 		muber.addViaje(viaje);
-		muber.addUser(user);
-		muber.addUser(user2);
-		muber.addUser(user3);
+		muber.addUser(conductor);
+		muber.addUser(pasajero1);
+		muber.addUser(pasajero2);
+		muber.addUser(pasajero3);
 		
 		Session session = sf.openSession();
 		
