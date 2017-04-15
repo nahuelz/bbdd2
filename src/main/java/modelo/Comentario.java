@@ -2,10 +2,10 @@ package modelo;
 
 public class Comentario {
 	
-	int idComentario;
-	String comentario;
-	int calificacion;
-	Pasajero pasajero;
+	private int idComentario;
+	private String comentario;
+	private int calificacion;
+	private Pasajero pasajero;
 	
 	public Comentario (){
 		

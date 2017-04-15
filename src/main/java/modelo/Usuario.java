@@ -1,21 +1,25 @@
 package modelo;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Usuario {
+public abstract class Usuario {
 	
-	int idUsuario;
-	String nombre;
-	String password;
-	Date fechaIngreso;
+	private int idUsuario;
+	private String nombre;
+	private String password;
+	private Date fechaIngreso;
+	private Set<Viaje> viajes;
 	
 	public Usuario (String nombre, String password, Date fecha){
+		this();
 		this.setNombre(nombre);
 		this.setPassword(password);
 		this.setFechaIngreso(fecha);
 	}
 	
 	public Usuario() {
-		// TODO Auto-generated constructor stub
+		this.setViajes(new HashSet<Viaje>());
 	}
 
 	public int getIdUsuario() {
@@ -50,7 +54,20 @@ public class Usuario {
 		this.fechaIngreso = fechaIngreso;
 	}
 	
+	public Set<Viaje> getViajes() {
+		return this.viajes;
+	}
 	
+	private void setViajes(Set<Viaje> viajes) {
+		this.viajes = viajes;
+	}
 	
+	public void addViaje(Viaje viaje) {
+		this.viajes.add(viaje);
+	}
+	
+	public abstract boolean isPasajero();
+
+	public abstract boolean isConductor();
 
 }

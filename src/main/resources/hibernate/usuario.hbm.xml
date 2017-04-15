@@ -14,6 +14,11 @@
 				<property name="password" column="PASSWORD"></property>
 				<property name="fechaIngreso" column="FECHA_INGRESO"></property>
 				
+				<set name="viajes" table="USUARIO_VIAJE" cascade="all">
+					<key column="ID_USUARIO"/>
+					<many-to-many column="ID_VIAJE" class="Viaje"/>
+				</set>
+				
 				<subclass name="Pasajero" discriminator-value="PASAJERO">
 					<property name="creditos" column="CREDITOS"/>
 				</subclass>

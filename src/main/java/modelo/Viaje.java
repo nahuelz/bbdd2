@@ -1,20 +1,20 @@
 package modelo;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Set;
 
 public class Viaje {
-	int idViaje;
-	String origen;
-	String destino;
-	int costoTotal;
-	Date fecha;
-	int cantidadMaximaPasajeros;
-	Conductor conductor;
-	Collection<Pasajero> pasajeros;
-	Collection<Comentario> comentarios;
-	boolean finalizado;
+	private int idViaje;
+	private String origen;
+	private String destino;
+	private int costoTotal;
+	private Date fecha;
+	private int cantidadMaximaPasajeros;
+	private Conductor conductor;
+	private Set<Pasajero> pasajeros;
+	private Set<Comentario> comentarios;
+	private boolean finalizado;
 
 	public Viaje() {
 		this.pasajeros = new HashSet<Pasajero>();
@@ -30,6 +30,7 @@ public class Viaje {
 		this.setFecha(fecha);
 		this.setCostoTotal(costoTotal);
 		this.setConductor(conductor);
+		conductor.addViaje(this);
 	}
 	
 	public int getIdViaje() {
@@ -77,19 +78,19 @@ public class Viaje {
 		this.conductor = conductor;
 	}
 	
-	public Collection<Pasajero> getPasajeros() {
+	public Set<Pasajero> getPasajeros() {
 		return pasajeros;
 	}
  
-	public void setPasajeros(Collection<Pasajero> pasajeros) {
+	public void setPasajeros(Set<Pasajero> pasajeros) {
 		this.pasajeros = pasajeros;
 	}
 	
-	public Collection<Comentario> getComentarios() {
+	public Set<Comentario> getComentarios() {
 		return comentarios;
 	}
  
-	public void setComentarios(Collection<Comentario> comentarios) {
+	public void setComentarios(Set<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
 	
@@ -97,6 +98,7 @@ public class Viaje {
 		if((pasajeros.size() < this.getCantidadMaximaPasajeros()) && 
 				(this.puedeViajar(pasajero))) {
 			this.pasajeros.add(pasajero);
+			pasajero.addViaje(this);
 		}
 	}
 	
@@ -124,5 +126,13 @@ public class Viaje {
 		this.comentarios.add(comentario);
 	}
 	
+	public float puntajePromedio() {
+		float promedio = 0;
+		Set<Comentario> comentarios = this.getComentarios();
+		for ( Comentario comentario : comentarios ) {
+			promedio = promedio + comentario.getCalificacion();
+		}
+		return promedio/comentarios.size();
+	}
 	
 }

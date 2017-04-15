@@ -35,4 +35,13 @@ public class Pasajero extends Usuario {
 	public void descontarCredito(float cantidad){
 		this.creditos = this.creditos - cantidad;
 	}
+	
+	public boolean isPasajero() {
+		return true;
+	}
+
+	public boolean isConductor() {
+		return false;
+	}
+	
 }

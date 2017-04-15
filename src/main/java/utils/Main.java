@@ -75,7 +75,7 @@ public class Main {
 		Transaction tx = session.beginTransaction();
 		session.persist(muber);
 		tx.commit();
-		 	
+		
 		 	
 	}
 

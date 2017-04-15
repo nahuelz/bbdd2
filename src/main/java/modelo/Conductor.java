@@ -1,10 +1,11 @@
 package modelo;
 import java.util.Date;
+import java.util.Set;
 
 public class Conductor extends Usuario {
 	
-	int idConductor;
-	Date fechaVencimientoLic;
+	private int idConductor;
+	private Date fechaVencimientoLic;
 	
 	public Conductor(){
 		super();
@@ -31,5 +32,21 @@ public class Conductor extends Usuario {
 		this.idConductor = idConductor;
 	}
 	
+	public boolean isPasajero() {
+		return false;
+	}
+
+	public boolean isConductor() {
+		return true;
+	}
+	
+	public float puntajePromedio() {
+		float promedio = 0;
+		Set<Viaje> viajes = this.getViajes();
+		for (Viaje viaje : viajes ) {
+			promedio = promedio + viaje.puntajePromedio();
+		}
+		return promedio/viajes.size();
+	}
 
 }
