@@ -47,7 +47,6 @@ public class Main {
 		viaje.addPasajero(pasajero2);
 		viaje.addPasajero(pasajero3);
 		
-		viaje.finalizar();
 		
 		Comentario comentario1 = new Comentario(5, "Muy buen conductor", pasajero1);
 		viaje.addComentario(comentario1);
